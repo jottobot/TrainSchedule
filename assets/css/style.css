@@ -1,0 +1,25 @@
+#title {
+    background-color: brown;
+    color: white;
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+#train-table {
+    padding: 2%;
+}  
+
+ #addTrain-form {
+    padding: 2%;
+} 
+
+.card {
+    margin-bottom: 3%;
+    border-style: solid;
+    border-color: blue;
+}
+
+.card-header {
+    background-color: blue;
+    color: white;
+}

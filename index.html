@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Train Times</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- CSS styling-->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+    <!-- moment JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <!-- jquery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+    <!-- javascript -->
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main-container">
+        <div class="jumbotron jumbotron-fluid" id="title">
+            <div class="container">
+                <h1 class="display-4">Train Time Tracker</h1>
+                <p class="lead">...</p>
+            </div>
+        </div>
+
+        <div class="card" >
+            <div class="card-header">
+                Trains Running
+            </div>
+            <table class="table" id="train-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Train Name</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Frequency (minutes)</th>
+                        <th scope="col">Next Arrival</th>
+                        <th scope="col"># of Minues Away</th>
+                    </tr>
+                </thead>
+                <tbody id="list">
+                    <tr>
+                        <!-- <th scope="row">1</th> -->
+                        <td>Bellevue Bullet</td>
+                        <td>Bellingham</td>
+                        <td>10</td>
+                        <td>5:30</td>
+                        <td>3</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Add a Train
+            </div>
+            <form id="addTrain-form">
+                <div class="form-group">
+                    <label for="name">Train Name</label>
+                    <input type="text" class="form-control" id="name" aria-describedby="name">
+                </div>
+                <div class="form-group">
+                    <label for="dest">Destination</label>
+                    <input type="text" class="form-control" id="dest">
+                </div>
+                <div class="form-group">
+                    <label for="first">First Train Time (HH:mm - military time)</label>
+                    <input type="text" class="form-control" id="first">
+                </div>
+                <div class="form-group">
+                    <label for="mins">Frequency (minutes)</label>
+                    <input type="text" class="form-control" id="mins">
+                </div>
+                <button type="submit" class="btn btn-primary" onclick="addTrain()">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
