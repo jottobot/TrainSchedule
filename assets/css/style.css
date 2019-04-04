@@ -5,6 +5,11 @@
     margin-bottom: 3%;
 }
 
+.display {
+    font-style: bold;
+    font-size: 50px;
+}
+
 #train-table {
     padding: 2%;
 }  

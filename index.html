@@ -17,19 +17,19 @@
     <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
     <!-- javascript -->
-    <script src="app.js"></script>
+    <script src="assets/javascript/app.js"></script>
 </head>
 
 <body>
     <div class="container" id="main-container">
         <div class="jumbotron jumbotron-fluid" id="title">
             <div class="container">
-                <h1 class="display-4">Train Time Tracker</h1>
-                <p class="lead">...</p>
+                <h1 class="display">Train Time Tracker</h1>
+                <p class="lead">Anytime is Train Time</p>
             </div>
         </div>
 
-        <div class="card" >
+        <div class="card">
             <div class="card-header">
                 Trains Running
             </div>
@@ -45,7 +45,6 @@
                 </thead>
                 <tbody id="list">
                     <tr>
-                        <!-- <th scope="row">1</th> -->
                         <td>Bellevue Bullet</td>
                         <td>Bellingham</td>
                         <td>10</td>
@@ -75,7 +74,7 @@
                 </div>
                 <div class="form-group">
                     <label for="mins">Frequency (minutes)</label>
-                    <input type="text" class="form-control" id="mins">
+                    <input type="text" class="form-control" id="freq">
                 </div>
                 <button type="submit" class="btn btn-primary" onclick="addTrain()">Submit</button>
             </form>
