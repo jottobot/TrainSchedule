@@ -21,12 +21,11 @@ var freq = "";
 function addTrain() {
     event.preventDefault();
 
-    // Grabbed values from text boxes
+    // Grabbing values from text boxes
     name = $("#name").val().trim();
     dest = $("#dest").val().trim();
     first = $("#first").val().trim();
     freq = $("#freq").val().trim();
-
     console.log(name, dest, first, freq);
 
     // Code for handling the push
@@ -36,28 +35,52 @@ function addTrain() {
         first: first,
         freq: freq,
     });
-
 }
 
-database.ref().on("child_added", function (childSnapshot) {
+database.ref().on("child_added", function (snapshot) {
 
     var row = new $('<tr>');
 
     var tdName = new $('<td>', {
-        text: childSnapshot.val().name
-    })
+        text: snapshot.val().name
+    });
 
-    //var stDate = childSnapshot.val().startDate;
-    //var monthRate = childSnapshot.val().monthlyRate;
+    // Assumptions
+    var freq = 3;
 
-    //var months = moment().diff(moment(stDate, "MM/DD/YYYY"), "months");
-    //console.log(stDate, months);
+    // Time is 3:30 AM
+    var first = "03:30";
 
-    row.append($('<td>').text(childSnapshot.val().name));
-    row.append($('<td>').text(childSnapshot.val().dest));
-    row.append($('<td>').text(childSnapshot.val().freq));
-    //row.append($('<td>').text(childSnapshot.val().dest));
+    // (pushed back 1 year to make sure it comes before current time)
+    var firstTimeConverted = moment(first, "HH:mm").subtract(1, "years");
+    console.log(firstTimeConverted);
 
-    
+    // get current time
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+    // diff between the times
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
+
+    // Time apart (remainder)
+    var remainder = diffTime % freq;
+    console.log(remainder);
+
+    // minutes
+    var minutes = freq - remainder;
+    console.log("MINUTES TILL TRAIN: " + minutes);
+
+    // Next Train
+    var nextTrain = moment().add(minutes, "minutes").format("hh:mm A");
+    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+
+    row.append($('<td>').text(snapshot.val().name));
+    row.append($('<td>').text(snapshot.val().dest));
+    row.append($('<td>').text(snapshot.val().freq));
+    row.append($('<td>').text(nextTrain));
+    row.append($('<td>').text(minutes));
+
     $('#list').append(row);
 });
+
